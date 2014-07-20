@@ -1,0 +1,2 @@
+# Create an exception for CoffeeScript files.
+*.coffee

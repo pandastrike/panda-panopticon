@@ -1,0 +1,157 @@
+body
+{
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica";
+}
+
+progress
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+// Polymer Elements
+paper-button[raisedButton]
+{
+  background: #4285f4;
+  color: #fff;
+  height: 2em;
+  width: 5em;
+}
+
+paper-button:hover {
+    background: #2a56c6;
+}
+
+paper-button::shadow #ripple {
+    color: #fff;
+    //color: #031535;
+}
+
+
+paper-progress
+{
+  position: relative;
+  width: 100%;
+  height: 3em;
+}
+
+paper-tabs
+{
+  background: #4285f4;
+  color: #fff;
+}
+
+paper-tabs::shadow #selectionBar {
+    background-color: #f4b142;
+    height: 0.3em;
+}
+
+paper-tab::shadow #ink {
+    color: #fff;
+}
+
+
+paper-radio-button::shadow #ink[checked] {
+  color: #4285f4;
+}
+
+paper-radio-button::shadow #onRadio {
+  background-color: #4285f4;
+}
+
+
+#plot_area
+{
+  width: 100%;
+}
+
+.plot
+{
+  position: relative;
+  width: 95%;
+  height: 700px;
+  margin-bottom: 3em;
+}
+
+.slides
+{
+  display: none;
+}
+
+.filter
+{
+  color: #aaa;
+  background-color: #666;
+  border: 1px solid #aaa;
+  padding: 0.5em;
+  width: 15em;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.filter.core-selected
+{
+  background-color: #1266f1;
+  color: #fff;
+}
+
+
+
+#loginButton
+{
+  width: 7em;
+  //background-color: #ffc000;
+  background-color: #f4b142;
+  color: black
+}
+
+#plotButton
+{
+  display: none;
+  width: 9em;
+}
+
+#optionButton
+{
+  display: none;
+  width: 6em;
+}
+
+#filterAll
+{
+  width: 9em;
+}
+
+#filterNone
+{
+  width: 9em;
+}
+
+
+
+
+#optionDialog
+{
+  width: 75%;
+}
+
+#option_0
+{
+  display: block;
+}
+
+#timespan
+{
+  width: 4em;
+}
+
+#resolution
+{
+  width: 4em;
+}

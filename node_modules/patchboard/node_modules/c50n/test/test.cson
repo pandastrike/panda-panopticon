@@ -1,0 +1,17 @@
+origin: "tests",
+url: "http://localhost:1337",
+log_level: "debug",
+positions_file: "positions.cson",
+crash_file: "crash.cson"
+health:
+  ip: "127.0.0.1"
+  port: 3000
+
+simple:
+  path: "test/data/numbered_lines.txt"
+catalina:
+  path: "test/data/catalina.out"
+  pattern: /^\w+ \d+, \d+ \d+:\d+:\d+ [AP]M/
+tardy:
+  path: "test/data/tardy.txt"
+

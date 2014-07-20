@@ -1,4 +1,6 @@
-panda-panopticon
+Panda Panopticon
 ================
 
-An AWS cloudwatch dashboard written in node.js using the AWS node.js SDK
+An Amazon Web Services (AWS) CloudWatch dashboard written in node.js using the AWS Node.js SDK.
+
+Panda Panopticon lets you see it all
