@@ -185,10 +185,11 @@ PCW.AWSLogin = () ->
               # Parse the proxy server's response, "responseText".
               temp = request.responseText.split ";"
 
-              PCW.instance_list = temp[0].split ","
-              PCW.tag_list = temp[1].split ","
+              PCW.user_token = temp[0]
+              PCW.instance_list = temp[1].split ","
+              PCW.tag_list = temp[2].split ","
 
-              for i in [2..temp.length - 1]
+              for i in [3..temp.length - 1]
                 PCW.match_list.push PCW.instance_list[i] + "," + temp[i]
 
 
@@ -343,7 +344,7 @@ PCW.PullMetrics = () ->
   request.open "POST", "/pull_metrics", true
 
   # Create the first message to send to the proxy server.
-  message = PCW.time_parameters + ";" + PCW.target_pull_list[0] + ";" + PCW.metric_pull_list[0]
+  message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[0] + ";" + PCW.metric_pull_list[0]
   PCW.target_index = 0
   PCW.metric_index = 0
 
@@ -388,7 +389,7 @@ PCW.CallAmazon = (request, message)->
               # Prepare
               request = new XMLHttpRequest()
               request.open "POST", "/pull_metrics", true
-              message = PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] +
+              message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] +
               ";" + PCW.metric_pull_list[PCW.metric_index]
 
               # Fire
@@ -409,7 +410,7 @@ PCW.CallAmazon = (request, message)->
                 # Prepare
                 request = new XMLHttpRequest()
                 request.open "POST", "/pull_metrics", true
-                message = PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] +
+                message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] +
                 ";" + PCW.metric_pull_list[PCW.metric_index]
 
                 # Fire
@@ -422,7 +423,7 @@ PCW.CallAmazon = (request, message)->
 
 
 
-  # Fire AJAX call, including the message string.   Cross your fingers.
+  # Fire the first AJAX call, including the message string.   Cross your fingers.
   request.send message
 
 

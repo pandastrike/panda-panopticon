@@ -121,9 +121,10 @@
             return document.getElementById('toastMessage').show();
           } else {
             temp = request.responseText.split(";");
-            PCW.instance_list = temp[0].split(",");
-            PCW.tag_list = temp[1].split(",");
-            for (i = _i = 2, _ref = temp.length - 1; 2 <= _ref ? _i <= _ref : _i >= _ref; i = 2 <= _ref ? ++_i : --_i) {
+            PCW.user_token = temp[0];
+            PCW.instance_list = temp[1].split(",");
+            PCW.tag_list = temp[2].split(",");
+            for (i = _i = 3, _ref = temp.length - 1; 3 <= _ref ? _i <= _ref : _i >= _ref; i = 3 <= _ref ? ++_i : --_i) {
               PCW.match_list.push(PCW.instance_list[i] + "," + temp[i]);
             }
             PCW.instance_list.sort();
@@ -220,7 +221,7 @@
     PCW.final_series = [];
     request = new XMLHttpRequest();
     request.open("POST", "/pull_metrics", true);
-    message = PCW.time_parameters + ";" + PCW.target_pull_list[0] + ";" + PCW.metric_pull_list[0];
+    message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[0] + ";" + PCW.metric_pull_list[0];
     PCW.target_index = 0;
     PCW.metric_index = 0;
     return PCW.CallAmazon(request, message);
@@ -241,7 +242,7 @@
             PCW.target_index++;
             request = new XMLHttpRequest();
             request.open("POST", "/pull_metrics", true);
-            message = PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] + ";" + PCW.metric_pull_list[PCW.metric_index];
+            message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] + ";" + PCW.metric_pull_list[PCW.metric_index];
             return PCW.CallAmazon(request, message);
           } else {
             PCW.DrawPlot();
@@ -251,7 +252,7 @@
               PCW.metric_index++;
               request = new XMLHttpRequest();
               request.open("POST", "/pull_metrics", true);
-              message = PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] + ";" + PCW.metric_pull_list[PCW.metric_index];
+              message = PCW.user_token + ";" + PCW.time_parameters + ";" + PCW.target_pull_list[PCW.target_index] + ";" + PCW.metric_pull_list[PCW.metric_index];
               return PCW.CallAmazon(request, message);
             }
           }
