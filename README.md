@@ -1,10 +1,11 @@
 The Panda Panopticon
 =====================
 
-Copyright (c) 2014 PandaStrike
+__Copyright (c) 2014 PandaStrike__
 
-Contributors: David Harper <david@pandastrike.com>
-              Lance Lakey  <lance@pandastrike.com>
+__Contributors:__
+- David Harper <david@pandastrike.com>
+- Lance Lakey  <lance@pandastrike.com>
 
 This software is released under the MIT License.
 
@@ -13,7 +14,7 @@ Overview
 Panda Panopticon is a lightweight Amazon Web Services (AWS) CloudWatch dashboard, and it lets you see it all.  This app is anchored by a proxy server, implemented in Node.js.  The server makes use of the AWS Node SDK to pull data from Amazon and pipe it to the client.  The client offers a graphical user interface (GUI) constructed from Polymer elements.  Data is processed in-browser using JavaScript and plotted using the HighCharts JavaScript library.  User credentials and data are protected through end-to-end encryption.
 
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Overview.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Overview.png">
 -> Overview of application structure.
 
 
@@ -24,24 +25,24 @@ Overall, the GUI is minimalist.  On loading, click "AWS Login" and simply enter 
 - (2) Secret Access Key,
 - (3) Region (Currently, only one region at a time is supported).
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Login.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Login.png">
 -> Screenshot of Login.
 
 Upon successful login, two new buttons will appear.  Let's start with "Options".
 
 This pulls up a dialog box that lets you customize your query to Amazon.  The first tab contains time controls.  You may request data from as far back as two weeks.  You also have control over the reporting time-resolution, however, there are restrictions.  Amazon will not accept requests that return greater than 1,440 data points, so make sure Time / Resolution < 1,440.  Also, resolutions finer than 5 minutes are only available to those that paid Amazon for this extra service.
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Time.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Time.png">
 -> Screenshot of time tab
 
 The next tab controls the source of the data.  All instances and tags currently associated with your account, as of your login, are auto-discovered and displayed here, alphabetically.  You may select one or more instances by their ID(s).  Or, you may instead select one or more tag name(s), and the appropriate instances will be pulled.    This list is currently not updated automatically, so if any new ones are created, you will need to logout and log back in.
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Filter.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Filter.png">
 -> Screenshot of instance/tag tab
 
 The final tab controls what data is pulled for each instance.  You may select one or more of the metrics displayed.  Each metric will be plotted separately.
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Metric.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Metric.png">
 -> Screenshot of metric tab
 
 
@@ -50,7 +51,7 @@ With your options set, we can finally push the "Pull Metrics Button".  Depending
 
 If you hover your cursor over a plot, you will notice a tooltip appears.  This helpful feature gives you detailed information on the instance you're examining.  You have access to detailed timestamp and tagging information, right there in the plot.  So, go forth and see it for yourself!!
 
-<img src="https://raw.github.com/pandastrike/panda-panopticon/ReadmeImages/Plot.png">
+<img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Plot.png">
 -> Screenshot of plot demo
 
 
