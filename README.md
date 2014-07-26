@@ -73,11 +73,11 @@ __Getting Setup:__
 - (2) Download this repository onto your computer or server.
 - (3) You'll need to place private key and a security certificate in the "security" folder.  You can get these from a trusted cert authority, or if you want to test for free, you can use OpenSSL.  These three commands will do the trick:
 
-`openssl genrsa -out privatekey.pem 1024
+`openssl genrsa -out privatekey.pem 1024`
 
-openssl req -new -key privatekey.pem -out certrequest.csr
+`openssl req -new -key privatekey.pem -out certrequest.csr`
 
-openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem`
+`openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem`
 
 - (4) You should be ready to go.  Activate the server with the following:
 
