@@ -87,12 +87,15 @@ __Getting Setup:__
 
 
 
-__Proxy Server:__
+
+__Details - Proxy Server:__
+
 This is relatively lightweight and implemented in vanilla Node.  The client-to-server connection is secured by forcing HTTPS protocol.  When pulling data from Amazon, the 'aws-sdk' module offers SSL protection within its API calls.  Basic files for the app use GET requests to the server and are fulfilled with simple static serving, implemented by the 'node-static' module.  
 
 Logging in and requesting data are sent as POST requests for more specialized handling.  After successful login, the sever will assign a unique random token to the client for identification.  Credentials are stored on the server for 24 hours and pulled when presented with the correct token.  Credentials are *not* stored within the client.
 
-__Client:__
+__Details - Client:__
+
 This is the main user interface.  Buttons and other elements on-screen are powered by Google's Polymer elements.  JavaScript for the client page is generated from CoffeeScript.  Seek the *.coffee file for annotated code.
 
 After logging in, the credentials are removed from memory and the input fields as a security precaution.  The server returns a token that is used for identification in their place.  The "Options" dialog is programmatically populated with instance IDs and tag names.  
