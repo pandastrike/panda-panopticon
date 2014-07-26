@@ -47,7 +47,7 @@ The final tab controls what data is pulled for each instance.  You may select on
 
 
 
-With your options set, we can finally push the "Pull Metrics Button".  Depending on how many instances are being analyzed, this might take a while.  But, you can see your progress displayed as data is pulled down.  Each metric gets its own plot, and these plots take up the whole window.
+With your options set, we can finally push the "Pull Metrics" Button.  Depending on how many instances are being analyzed, this might take a while.  But, you can see your progress displayed as data is pulled down.  Each metric gets its own plot, and these plots take up the whole window.
 
 If you hover your cursor over a plot, you will notice a tooltip appears.  This helpful feature gives you detailed information on the instance you're examining.  You have access to detailed timestamp and tagging information, right there in the plot.  So, go forth and see it for yourself!!
 
@@ -64,7 +64,26 @@ Technologies used in Panda Panopticon:
 - Polymer <http://www.polymer-project.org>
 - HighCharts <http://http://www.highcharts.com/>
 
-The Panda Panopticon consists of a user-facing client and proxy server to secure credentials and prevent cross-origin requests.  
+The Panda Panopticon consists of a user-facing client and proxy server to secure credentials and prevent cross-origin requests.  You can see a more detailed description of both below, but first let's cover how to get this up and running for your own testing.
+
+
+__Getting Setup:__
+
+- (1) Make sure you have Node installed.
+- (2) Download this repository onto your computer or server.
+- (3) You'll need to place private key and a security certificate in the "security" folder.  You can get these from a trusted cert authority, or if you want to test for free, you can use OpenSSL.  These three commands will do the trick:
+
+`openssl genrsa -out privatekey.pem 1024
+openssl req -new -key privatekey.pem -out certrequest.csr
+openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem`
+
+- (4) You should be ready to go.  Activate the server with the following:
+
+`node server.js`
+
+- (5) Now, direct your browser to the IP address of the remote server, or 'localhost' if you are testing this on your personal machine.  Panopticon will force an HTTPS connection, and you should see a web page ready to accept your AWS login.  Enjoy!!
+
+ 
 
 __Proxy Server:__
 This is relatively lightweight and implemented in vanilla Node.  The client-to-server connection is secured by forcing HTTPS protocol.  When pulling data from Amazon, the 'aws-sdk' module offers SSL protection within its API calls.  Basic files for the app use GET requests to the server and are fulfilled with simple static serving, implemented by the 'node-static' module.  
