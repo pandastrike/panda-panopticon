@@ -74,7 +74,9 @@ __Getting Setup:__
 - (3) You'll need to place private key and a security certificate in the "security" folder.  You can get these from a trusted cert authority, or if you want to test for free, you can use OpenSSL.  These three commands will do the trick:
 
 `openssl genrsa -out privatekey.pem 1024
+
 openssl req -new -key privatekey.pem -out certrequest.csr
+
 openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem`
 
 - (4) You should be ready to go.  Activate the server with the following:
@@ -83,7 +85,7 @@ openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.p
 
 - (5) Now, direct your browser to the IP address of the remote server, or 'localhost' if you are testing this on your personal machine.  Panopticon will force an HTTPS connection, and you should see a web page ready to accept your AWS login.  Enjoy!!
 
- 
+
 
 __Proxy Server:__
 This is relatively lightweight and implemented in vanilla Node.  The client-to-server connection is secured by forcing HTTPS protocol.  When pulling data from Amazon, the 'aws-sdk' module offers SSL protection within its API calls.  Basic files for the app use GET requests to the server and are fulfilled with simple static serving, implemented by the 'node-static' module.  
