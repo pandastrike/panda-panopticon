@@ -1,8 +1,8 @@
 #===============================================================================
-# PandaPandaCloudWatch is a data visiualization tool for Amazon Web Services.
-# The idea is to keep things simple and Web-native.   We make use of Dygraph
-# a data visualization library written in JavaScript that acts of HTML div elements.
-# Data is accessed from AWS via Amazon's javascript API.
+# Panda Panopticon is a data visiualization tool for Amazon Web Services.
+# The idea is to keep things simple and Web-native.   We make use of HighCharts,
+# a data visualization library written in JavaScript.
+# Data is accessed from AWS via Amazon's API (Node SDK).
 #
 # This tool is written in CoffeeScript.
 #
@@ -148,8 +148,8 @@ PCW.AWSLogin = () ->
 
 
   foo_1 = document.getElementById('login1').invalid
-  foo_2 = window.document.getElementById('login2').invalid
-  foo_3 = window.document.getElementById('login3').invalid
+  foo_2 = document.getElementById('login2').invalid
+  foo_3 = document.getElementById('login3').invalid
 
   if foo_1 == false and foo_2 == false and foo_3 == false
     # We may call Amzaon.  Prepare an AJAX call to our proxy server.
