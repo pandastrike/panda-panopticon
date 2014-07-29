@@ -18,12 +18,36 @@ Panda Panopticon is a lightweight Amazon Web Services (AWS) CloudWatch dashboard
 -> Overview of application structure.
 
 
+Installing and Running
+---------------
+* Install Node.js
+* Clone this repository
+* Install all the dependencies
+
+        npm install
+
+* Place a private key and a security certificate in the "security" folder. Get a cert from a CA or create a self signed cert using OpenSSL.
+
+```shell
+openssl genrsa -out privatekey.pem 1024
+openssl req -new -key privatekey.pem -out certrequest.csr
+openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem
+```
+
+* Run the server
+
+        node server.js
+
+* Direct your browser to the IP address of the remote server, or 'localhost' if you are testing this on your personal machine.  Panopticon will force an HTTPS connection, and you should see a web page ready to accept your AWS login.  Enjoy!!
+
+
 User Experience
 ----------------
-Overall, the GUI is minimalist.  On loading, click "AWS Login" and simply enter your account's:
-- (1) Access Key ID,
-- (2) Secret Access Key,
-- (3) Region (Currently, only one region at a time is supported).
+After the website loads, click "AWS Login" and simply enter your credentials  
+
+1. Access Key ID  
+1. Secret Access Key  
+1. Region (Currently, only one region at a time is supported)  
 
 <img src="https://raw.github.com/pandastrike/panda-panopticon/master/ReadmeImages/Login.png">
 -> Screenshot of Login.
@@ -56,45 +80,25 @@ If you hover your cursor over a plot, you will notice a tooltip appears.  This h
 
 
 
-Nuts and Bolts
+Technologies Used
 ---------------
-Technologies used in Panda Panopticon:
-- Node.js <http://www.nodejs.org>
-- Node Community Modules: 'aws-sdk', 'key-forge', 'node-static'
-- Polymer <http://www.polymer-project.org>
-- HighCharts <http://http://www.highcharts.com/>
-
-The Panda Panopticon consists of a user-facing client and proxy server to secure credentials and prevent cross-origin requests.  You can see a more detailed description of both below, but first let's cover how to get this up and running for your own testing.
+* Node.js <http://www.nodejs.org>
+* Node Community Modules: 'aws-sdk', 'key-forge', 'node-static'
+* Polymer <http://www.polymer-project.org>
+* HighCharts <http://http://www.highcharts.com/>
 
 
-__Getting Setup:__
+Details
+---------------
+The Panda Panopticon consists of a user-facing client and proxy server to secure credentials and prevent cross-origin requests.
 
-- (1) Make sure you have Node installed.
-- (2) Download this repository onto your computer or server.
-- (3) You'll need to place private key and a security certificate in the "security" folder.  You can get these from a trusted cert authority, or if you want to test for free, you can use OpenSSL.  These three commands will do the trick:
-
-`openssl genrsa -out privatekey.pem 1024`
-
-`openssl req -new -key privatekey.pem -out certrequest.csr`
-
-`openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem`
-
-- (4) You should be ready to go.  Activate the server with the following:
-
-`node server.js`
-
-- (5) Now, direct your browser to the IP address of the remote server, or 'localhost' if you are testing this on your personal machine.  Panopticon will force an HTTPS connection, and you should see a web page ready to accept your AWS login.  Enjoy!!
-
-
-
-
-__Details - Proxy Server:__
+#### Proxy Server
 
 This is relatively lightweight and implemented in vanilla Node.  The client-to-server connection is secured by forcing HTTPS protocol.  When pulling data from Amazon, the 'aws-sdk' module offers SSL protection within its API calls.  Basic files for the app use GET requests to the server and are fulfilled with simple static serving, implemented by the 'node-static' module.  
 
 Logging in and requesting data are sent as POST requests for more specialized handling.  After successful login, the sever will assign a unique random token to the client for identification.  Credentials are stored on the server for 24 hours and pulled when presented with the correct token.  Credentials are *not* stored within the client.
 
-__Details - Client:__
+#### Client
 
 This is the main user interface.  Buttons and other elements on-screen are powered by Google's Polymer elements.  JavaScript for the client page is generated from CoffeeScript.  Seek the *.coffee file for annotated code.
 
