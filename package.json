@@ -1,0 +1,15 @@
+{
+  "name": "panda-panopticon",
+  "description": "Data visualization tool for Amazon Web Services.  Metrics are pulled from Amazon's API and plotted using the HighCharts JavaScript library.",
+  "contributors": ["David Harper <david@pandastrike.com>","Lance Lakey <lance@pandastrike.com>"],
+  "version": "0.9.0",
+  "keywords": ["Amazon", "AWS", "data visualization", "HighCharts", "CloudWatch", "dashboard"],
+  "homepage": "https://github.com/pandastrike/panda-panopticon",
+  "bugs": "https://github.com/pandastrike/panda-panopticon/issues",
+  "license": "MIT",
+  "dependencies":{
+    "aws-sdk": "2.0.x",
+    "key-forge": "0.1.x",
+    "node-static": "0.7.x"
+  },
+}
