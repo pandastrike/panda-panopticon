@@ -20,7 +20,7 @@ Panda Panopticon is a lightweight Amazon Web Services (AWS) CloudWatch dashboard
 
 Installing and Running
 ---------------
-* Install Node.js
+* Install Node.js and npm
 * Clone this repository
 * Install all the dependencies
 
