@@ -7,19 +7,20 @@ var node_static = require('node-static');
 var AWS = require('aws-sdk');
 var randomKey = require('key-forge').randomKey;
 
-
+// Name the full path to the directory that contains the app.
+var root_directory = "/var/panda-panopticon";
 
 
 // Load HTTPS private key and certificate.
 // These files are used by the 'https' core module to establish a secure connection.
 options = {
-  key: fs.readFileSync('./security/privatekey.pem'),
-  cert: fs.readFileSync('./security/certificate.pem')
+  key: fs.readFileSync(root_directory + '/security/privatekey.pem'),
+  cert: fs.readFileSync(root_directory + '/security/certificate.pem')
 }
 
 
 // Create a static file server.  The 'node-static' community module makes life easier.
-var file_server = new node_static.Server('./public');
+var file_server = new node_static.Server(root_directory + '/public');
 
 
 // Create an array to store unique User session objects.

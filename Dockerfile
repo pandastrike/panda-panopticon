@@ -4,12 +4,16 @@ MAINTAINER David Harper "david@pandastrike.com"
 
 # Add the necessary technologies to assemble this app.
 RUN apt-get update
-RUN apt-get install git
-RUN apt-get install nodejs
-RUN apt-get install npm
+RUN apt-get -y install git
+RUN apt-get -y install nodejs
+RUN apt-get -y install npm
 
 # Pull the app from its git repository and place it in this image.
-RUN mkdir var/panda_panopticon
-RUN cd var/panda_panopticon
-RUN git init
-RUN git clone https://github.com/pandastrike/panda-panopticon.git
+RUN cd /var;git clone https://github.com/pandastrike/panda-panopticon.git
+RUN cd /var/panda-panopticon;npm install
+
+EXPOSE 3000
+EXPOSE 3001
+
+# The app is ready to go.  Start it up.
+CMD ["nodejs", "/var/panda-panopticon/server.js"]
