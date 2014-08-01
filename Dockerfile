@@ -17,3 +17,4 @@ EXPOSE 3000
 EXPOSE 3001
 
 # The app is ready to go.  Start it up.
+CMD ["/usr/bin/nodejs", "/var/panda-panopticon/server.js"]
