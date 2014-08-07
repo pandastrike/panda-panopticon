@@ -181,7 +181,8 @@ PCW.AWSLogin = () ->
 
             else
               # Success.
-
+              alert request.responseText
+              
               # Parse the proxy server's response, "responseText".
               temp = request.responseText.split ";"
 
